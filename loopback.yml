@@ -1,4 +1,4 @@
-
+---
 - name: Set Ip loopback
   hosts: all
   gather_facts: no
@@ -17,7 +17,11 @@
         commands:
           - show ip int brief
       register: Show_ip
-    - debug: var=Show ip int brief.stdout_lines
+    - debug: var=Show_ip.stdout_lines
+
+    
+        
+
 
     
         
