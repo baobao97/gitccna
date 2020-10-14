@@ -17,4 +17,4 @@
         commands:
           - show ip int brief
       register: Show_ip
-    - debug: var=show_ip.stdout-lines
+    - debug: var=show_ip.stdout_lines
