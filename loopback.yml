@@ -1,3 +1,4 @@
+---
 name: Set Ip loopback
 hosts: all
 gather_facts: no
