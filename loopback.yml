@@ -1,19 +1,20 @@
 ---
-name: Set Ip loopback
-hosts: all
-gather_facts: no
+- name: Set Ip loopback
+  hosts: all
+  gather_facts: no
 
-tasks:
+  tasks:
     - name : Set loopback IPv4 address
       ios_13_interface:
-        name: loopback {{ item.name}}
-        ipv4: 10.0.{{item.number}}.1/24
-    with_items:
-    - { name: "0", number: "0" }
-    - { name: "1", number: "1" }
-    - { name: "2", number: '2" }
+        name: loopback {{ item.name }}
+        ipv4: 10.0.{{ item.number }}.1/24
+      with_items:
+        - { name: "0", number: "0" }
+        - { name: "1", number: "1" }
+        - { name: "2", number: '2" }
     - name: Show ip int brief
       ios_command:
         commands:
           - show ip int brief
       register: Show_ip
+    - debug: var=show_ip.stdout-lines
